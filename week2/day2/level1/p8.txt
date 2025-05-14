@@ -1,0 +1,27 @@
+class Course{
+	private String courseName;
+	private int duration;
+	private int fee;
+	private static String instituteName;
+	Course(String courseName, int duration, int fee){
+		this.courseName = courseName;
+		this.duration = duration;
+		this.fee = fee;
+	}
+	void displayCourseDetails(){
+		System.out.println("Institute Name: " + instituteName);
+		System.out.println("Course Name: " + courseName);
+		System.out.println("Duration in minutes: "+duration);
+		System.out.println("Fee: " + fee);
+	}
+	public static void updateInstituteName(String InstituteName){
+		instituteName = InstituteName;
+	}
+}
+public class CourseMain {
+	public static void main(String[] args){
+		Course obj = new Course("Learn Java", 130, 500);
+		obj.updateInstituteName("Udemy");
+		obj.displayCourseDetails();
+	}
+}

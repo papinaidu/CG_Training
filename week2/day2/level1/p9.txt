@@ -1,0 +1,24 @@
+class vehicles{
+	private String ownerName;
+	private String vehicleType;
+	private static int registrationFee;
+	vehicles(String ownerName, String vehicleType){
+		this.ownerName = ownerName;
+		this.vehicleType = vehicleType;
+	}
+	void displayVehicleDetails(){
+		System.out.println("owner Name: " + ownerName);
+		System.out.println("vehicle Type: " + vehicleType);
+		System.out.println("registration Fee: " + registrationFee);
+	}
+	public static void updateRegistrationFee(int RegistrationFee){
+		registrationFee = RegistrationFee;
+	}
+}
+public class vehiclesMain {
+	public static void main(String[] args){
+		vehicles obj = new vehicles("John", "Auto");
+		obj.updateRegistrationFee(1999);
+		obj.displayVehicleDetails();
+	}
+}

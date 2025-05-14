@@ -1,0 +1,37 @@
+class Student{
+	public int rollNumber;
+	protected String name;
+	private double CGPA;
+	Student(String name, int rollNumber){
+		this.name = name;
+		this.rollNumber=rollNumber;
+	}
+	void setter(double CGPA){
+		this.CGPA = CGPA;
+	}
+	void displayStudent() {
+        	System.out.println("Roll Number: " + rollNumber);
+        	System.out.println("Name: " + name);
+        	System.out.println("CGPA: " + CGPA);
+   	}
+	
+}
+class PostgraduateStudent extends Student{
+	PostgraduateStudent(){
+		super("Raju",31);
+		setter(80);
+	}
+	void displayPostgraduateStudent() {
+        	displayStudent();
+   	}
+
+}
+public class Student1Main {
+	public static void main(String[] args){
+		Student obj = new Student("anil", 40);
+		obj.setter(8.0);
+		obj.displayStudent();
+		PostgraduateStudent obj2 = new PostgraduateStudent();
+		obj2.displayPostgraduateStudent();
+	}
+}

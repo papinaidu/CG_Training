@@ -1,0 +1,35 @@
+class Book{
+	public int ISBN;
+	protected String title;
+	private String author;
+	Book(int ISBN, String title){
+		this.ISBN = ISBN;
+		this.title=title;
+	}
+	void setter(String author){
+		this.author = author;
+	}
+	void displayDetails() {
+        	System.out.println("ISBN : " + ISBN);
+        	System.out.println("title: " + title);
+        	System.out.println("author: " + author);
+   	}
+	
+}
+class EBook extends Book{
+	EBook(int ISBN,String title){
+		super(ISBN, title);
+		setter("Raju");
+	}
+	void displayEBook() {
+        	displayDetails();
+   	}
+
+}
+public class EBookMain {
+	public static void main(String[] args){
+		EBook obj = new EBook(23489, "Hello World");
+		obj.displayEBook();
+		
+	}
+}

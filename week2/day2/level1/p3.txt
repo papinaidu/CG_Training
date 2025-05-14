@@ -1,0 +1,29 @@
+import java.util.Scanner;
+class person{
+	private String name;
+	private int num;
+	private String address;
+	person(String name, int num, String address){
+		this.name=name;
+		this.num = num;
+		this.address = address;
+	}
+	person(person obj){
+		this.name=obj.name;
+		this.num = obj.num;
+		this.address = obj.address;
+	}
+	void display(){
+		System.out.println(name);
+		System.out.println(num);
+		System.out.println(address);
+	}
+}
+public class personMain {
+	public static void main(String[] args){
+		person obj = new person("Anil", 897654321, "Chennai");
+		obj.display();
+		person obj2 = new person(obj);
+		obj2.display();
+	}
+}

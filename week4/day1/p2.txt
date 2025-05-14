@@ -1,0 +1,35 @@
+class Product <T>{
+   T category;
+   String name;
+   int price;
+
+   Product (String name, int price, T category){
+       this.name = name;
+       this.price = price;
+       this.category = category;
+   }
+
+   int discount(int percentage){
+       int amnt = (price*percentage) / 100;
+       return amnt;
+   }
+   void displayAmnt(int percentage){
+       System.out.println("Amount: " + discount(percentage));
+   }
+
+}
+
+enum GlossaryCategory {
+   FOOD, CLEANING, MEDICINE
+}
+
+public class Main {
+   public static <T extends Product<?>> void discountCal(T category, int percentage) {
+       category.discount(percentage);
+       category.displayAmnt(percentage);
+   }
+   public static void main(String[] args) {
+       Product<GlossaryCategory> obj = new Product<>( "Glossary", 200, GlossaryCategory.FOOD);
+       discountCal(obj, 10);
+   }
+}

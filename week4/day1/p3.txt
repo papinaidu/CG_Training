@@ -1,0 +1,81 @@
+abstract class CourseType{
+   String courseName;
+   String courseCode;
+   int creditHours;
+   CourseType(String courseName,  String courseCode, int creditHours){
+       this.courseName = courseName;
+       this.courseCode = courseCode;
+       this.creditHours = creditHours;
+   }
+   abstract String getEvaluationMethod();
+   public void displayCourseInfo() {
+       System.out.println("Course Name: " + courseName);
+       System.out.println("Course Code: " + courseCode);
+       System.out.println("Credit Hours: " + creditHours);
+       System.out.println("Course Evaluation: " + getEvaluationMethod());
+   }
+
+}
+class ExamCourse extends CourseType{
+   ExamCourse(String courseName, String courseCode, int creditHours){
+       super(courseName, courseCode, creditHours);
+   }
+   String getEvaluationMethod(){
+       return "Exam-Based";
+   }
+}
+class AssignmentCourse extends CourseType{
+   AssignmentCourse(String courseName, String courseCode, int creditHours){
+       super(courseName, courseCode, creditHours);
+   }
+   String getEvaluationMethod(){
+       return "Assignment-Based";
+   }
+}
+class ResearchCourse extends CourseType{
+   ResearchCourse(String courseName, String courseCode, int creditHours){
+       super(courseName, courseCode, creditHours);
+   }
+   String getEvaluationMethod(){
+       return "Research-Based";
+   }
+}
+class Course <T extends CourseType> {
+   T courseType;
+   Course(T courseType){
+       this.courseType = courseType;
+   }
+
+   public T getCourseType() {
+       return courseType;
+   }
+   void showDetail(){
+       courseType.displayCourseInfo();
+   }
+
+}
+public class Main {
+   public static void listCourses (List<? extends CourseType> courses){
+       for(CourseType course : courses){
+           course.displayCourseInfo();
+       }
+   }
+   public static void main(String[] args) {
+       Course<ExamCourse> examCourse = new Course<>(new ExamCourse("Math", "MAT23", 46));
+       Course<AssignmentCourse> assignmentCourse = new Course<>(new AssignmentCourse("English", "ENG13", 35));
+       Course<ResearchCourse> researchCourse = new Course<>(new ResearchCourse("AI", "AI69", 65));
+       examCourse.showDetail();
+       System.out.println();
+       assignmentCourse.showDetail();
+       System.out.println();
+       researchCourse.showDetail();
+
+
+       List<CourseType>  courses = new ArrayList<>();
+       courses.add(new ExamCourse("Math", "MAT23", 46));
+       courses.add(new AssignmentCourse("English", "ENG13", 35));
+       courses.add(new ResearchCourse("AI", "AI69", 65));
+       System.out.println();
+       listCourses(courses);
+   }
+}

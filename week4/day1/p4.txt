@@ -1,0 +1,102 @@
+abstract class MealPlan{
+   public String mealName;
+   public int calories;
+   MealPlan(String mealName, int calories){
+       this.mealName = mealName;
+       this.calories = calories;
+   }
+   abstract String getMealName();
+   abstract int getCalories();
+   abstract String getDietType();
+}
+class VegetarianMeal extends MealPlan {
+   public VegetarianMeal(String mealName, int calories) {
+       super(mealName, calories);
+   }
+
+   public String getMealName(){
+       return mealName;
+   }
+   public int getCalories(){
+       return calories;
+   }
+   public String getDietType(){
+       return "VegetarianMeal";
+   }
+}
+class VeganMeal extends MealPlan {
+   public VeganMeal(String mealName, int calories) {
+       super(mealName, calories);
+   }
+
+   public String getMealName(){
+       return mealName;
+   }
+   public int getCalories(){
+       return calories;
+   }
+   public String getDietType(){
+       return "VeganMeal";
+   }
+}
+class KetoMeal extends MealPlan {
+   public KetoMeal(String mealName, int calories) {
+       super(mealName, calories);
+   }
+
+   public String getMealName(){
+       return mealName;
+   }
+   public int getCalories(){
+       return calories;
+   }
+   public String getDietType(){
+       return "KetoMeal";
+   }
+}
+class HighProteinMeal extends MealPlan {
+   public HighProteinMeal(String mealName, int calories) {
+       super(mealName, calories);
+   }
+
+   public String getMealName(){
+       return mealName;
+   }
+   public int getCalories(){
+       return calories;
+   }
+   public String getDietType(){
+       return "HighProteinMeal";
+   }
+}
+class Meal<T extends MealPlan>{
+   T meal;
+   Meal(T meal){
+       this.meal = meal;
+   }
+   T getMeal(){
+       return meal;
+   }
+   void displayMeal(){
+       System.out.println("Meal Name: " + meal.getMealName());
+       System.out.println("Calories: " + meal.getCalories());
+       System.out.println("Diet Type: " + meal.getDietType());
+   }
+}
+public class Main {
+   public static <T extends Meal> void  generateMealPlan(T meal){
+       if (meal.getMeal().getCalories() > 0) {
+           System.out.println("Generating your personalized meal plan...");
+           meal.displayMeal();
+       } else {
+           System.out.println("Invalid meal: Calories must be greater than 0.");
+       }
+   }
+   public static void main(String[] args) {
+       Meal<VegetarianMeal> vegetarianMeal = new Meal<>(new VegetarianMeal("Meals",120));
+       generateMealPlan(vegetarianMeal);
+       System.out.println();
+       Meal<HighProteinMeal> highProteinMeal = new Meal<>(new HighProteinMeal("Chicken",250));
+       generateMealPlan(highProteinMeal);
+  }
+}
