@@ -31,9 +31,3 @@ CG_Training/
 - JDBC (Database connectivity using Java)
 - Mini Project integrating all concepts
 
-## 🚀 How to Use
-
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/papinaidu/CG_Training.git
-   cd CG_Training
